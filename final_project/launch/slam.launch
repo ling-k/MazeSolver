@@ -1,11 +1,11 @@
 <launch>
-  <arg name="x_pos" default="2.2"/>
-  <arg name="y_pos" default="-1.0"/>
-  <arg name="z_pos" default="-1.0"/>
+  <arg name="x_pos" default="2.1"/>
+  <arg name="y_pos" default="-1.2"/>
+  <arg name="yaw" default=" 3.14"/>
   <arg name="model" default="$(env TURTLEBOT3_MODEL)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find final_project)/worlds/maze_2.world"/>
+    <arg name="world_name" value="$(find final_project)/worlds/maze_one_exit.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
@@ -13,19 +13,23 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <node name="rqt_virtual_joy" pkg="rqt_virtual_joy" type="rqt_virtual_joy" />
+  <!-- robot control setup -->
+  <!-- <node name="rqt_virtual_joy" pkg="rqt_virtual_joy" type="rqt_virtual_joy" /> -->
+  <node pkg="final_project" name="maze_explorer" type="maze_explorer.py" />
+  <!-- <node name="explorer" pkg="final_project" type="final_project_explorer" output="screen" /> -->
+  <!-- <node name="final_project_translate" pkg="final_project" type="final_project_translator" /> -->
 
-  <node name="final_project_translate" pkg="final_project" type="final_project_translator" />
-
+  <!-- spawn the robot -->
   <param name="robot_description" command="$(find xacro)/xacro.py $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+  <node name="spawn_urdf_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -Y $(arg yaw) -param robot_description" />
 
-  <node name="spawn_urdf_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
-
+  <!-- visulization -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final_project)/config/rviz/maze.rviz" />
 
   <node name="republish" pkg="image_transport" type="republish" args="raw in:=/camera/rgb/image_raw compressed out:=/camera/rgb/image" />
 
-  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+  <!-- SLAM -->
+  <include file="$(find final_project)/launch/turtlebot3_slam.launch">
     <arg name="slam_methods" value="gmapping"/>
     <arg name="open_rviz" value="false"/>
   </include>
