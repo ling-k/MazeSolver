@@ -1,8 +1,8 @@
 
 
 All:
+roslaunch final_project all2.launch  //用maze_explorer.py进行巡航，其它两者相同
 roslaunch final_project all.launch  //用导航的方式巡航
-roslaunch final_project all.launch  //用maze_explorer.py进行巡航，其它两者相同
 
 
 
