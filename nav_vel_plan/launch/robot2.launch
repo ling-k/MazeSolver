@@ -1,0 +1,10 @@
+<launch>
+
+<include file="$(find nav_vel_plan)/launch/maze_navigation.launch">
+</include>
+
+<node pkg="nav_vel_plan" type="robot2" respawn="true" name="robot2_self" output="screen" clear_params="true">
+     <remap from="robot2_self/comm" to="/comm"/>
+</node>
+  
+</launch>

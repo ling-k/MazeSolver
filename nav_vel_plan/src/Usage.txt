@@ -1,0 +1,10 @@
+roslaunch fira_maze maze_1_two_robots.launch
+
+robot1:
+ roslaunch nav_vel_plan robot1.launch  //机器人1工作节点,同时启动导航，类：NavVelPlan，节点：robot1
+
+robot2:
+  roslaunch nav_vel_plan robot2.launch  //机器人2工作节点，同时启动导航,类：Follow，节点：robot2
+
+
+可在robot1弹出的rviz里面，将robot1导航到离robot2比较进的位置就可以触发行动

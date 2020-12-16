@@ -1,0 +1,14 @@
+<launch>
+  <!--<node pkg="tf" type="static_transform_publisher" name="map_base_joint" args="0.0 0.0 0.0 0 0 0  map robot1_tf/odom 20" />-->
+  <include file="$(find maze_navigation)/launch/maze_navigation.launch">
+  </include>
+
+  <node pkg="nav_vel_plan" type="robot1" respawn="true" name="robot1_look" output="screen" clear_params="true">
+    <rosparam file="$(find nav_vel_plan)/config/costmap_common_params.yaml" command="load" ns="vel_costmap" />
+    <rosparam file="$(find nav_vel_plan)/config/vel_planner.yaml" command="load" />
+    <rosparam file="$(find nav_vel_plan)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find nav_vel_plan)/config/global_costmap_params.yaml" command="load" />
+    <remap from="robot1_look/vel_plan_nodehandle/robot1/find_robot2" to="/robot1/find_robot2"/>
+  </node>
+  
+</launch>

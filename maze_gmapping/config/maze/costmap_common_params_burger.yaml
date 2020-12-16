@@ -1,0 +1,15 @@
+
+transform_tolerance: 3
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+# footprint: [[-0.05, -0.05], [-0.05, 0.05], [0.021, 0.05], [0.021, -0.05]]
+footprint: [[-0.107, 0.07], [-0.107, -0.07], [0.033, -0.07], [0.033, 0.07]]
+robot_radius: 0.06
+
+inflation_radius: 0.12
+cost_scaling_factor: 5
+
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: robot1_tf/base_scan, data_type: LaserScan, topic: robot1/scan, marking: true, clearing: true}

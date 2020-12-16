@@ -1,0 +1,11 @@
+<launch>
+
+  <!-- move_base -->
+
+  <include file="$(find nav_vel_plan)/launch/maze_move_base.launch">
+  </include>
+
+  
+   <!-- 运行rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_robot2" args="-d $(find nav_vel_plan)/rviz/rtabmap.rviz"/> 
+</launch>

@@ -2,7 +2,7 @@
   <arg name="x_pos" default="0.0"/>
   <arg name="y_pos" default="0.0"/>
   <arg name="z_pos" default="0.0"/>
-  <!-- <arg name="model" default="$(env TURTLEBOT3_MODEL)"/> -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find final_project)/worlds/maze_2.world"/>
@@ -13,7 +13,7 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <!-- <node name="rqt_virtual_joy" pkg="rqt_virtual_joy" type="rqt_virtual_joy" />
+  <node name="rqt_virtual_joy" pkg="rqt_virtual_joy" type="rqt_virtual_joy" />
 
   <node name="final_project_translate" pkg="final_project" type="final_project_translator" />
 
@@ -21,8 +21,8 @@
 
   <node name="spawn_urdf_1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find booster2)/config/rviz/visual.rviz" />
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find booster2)/config/rviz/visual.rviz" /> -->
 
-  <node name="republish" pkg="image_transport" type="republish" args="raw in:=/camera/rgb/image_raw compressed out:=/camera/rgb/image" /> -->
+  <node name="republish" pkg="image_transport" type="republish" args="raw in:=/camera/rgb/image_raw compressed out:=/camera/rgb/image" />
 
 </launch>

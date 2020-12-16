@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(final_project)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -144,9 +144,6 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(${PROJECT_NAME}_translator src/translator.cpp)
 target_link_libraries(${PROJECT_NAME}_translator ${catkin_LIBRARIES})
-
-add_executable(${PROJECT_NAME}_explorer src/explorer.cpp)
-target_link_libraries(${PROJECT_NAME}_explorer ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

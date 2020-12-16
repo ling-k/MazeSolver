@@ -1,0 +1,12 @@
+<launch>
+    <node pkg="nav_vel_plan" type="odom_to_tf" respawn="true" name="odom_to_tf" output="screen" clear_params="true">
+        <!--<remap from="robot2_self/comm" to="/comm"/>-->
+    </node>
+
+    <include file="$(find nav_vel_plan)/launch/gmapping.launch"/>
+    <!--<include file="$(find nav_vel_plan)/launch/maze_move_base.launch"/>-->
+
+    <!-- 启动rviz -->
+    <node pkg="rviz" type="rviz" name="rviz_robot2_gmapping" args="-d $(find nav_vel_plan)/rviz/gmapping.rviz"/>
+
+</launch>

@@ -1,0 +1,50 @@
+DWAPlannerROS: 
+  # footprint: [[-0.05, -0.05], [-0.05, 0.05], [0.021, 0.05], [0.021, -0.05]]
+  #机器人配置参数
+  #加速度
+  acc_lim_theta: 3.0 #3.2
+  acc_lim_x: 2.0  #2.5
+  acc_lim_y: 0  #2.5
+  #x,y速度
+  max_vel_x: 0.22 #0.55
+  min_vel_x: -0.22   #0
+  max_vel_y: 0  #0.1
+  min_vel_y: 0 #-0.1
+  #平移
+  max_vel_trans: 0.22  #0.55 机器人最大平移速度的绝对值，单位m/s
+  min_vel_trans: 0.05  #0.1
+  #旋转
+  max_vel_theta: 2.75
+  min_vel_theta: 0.5
+  trans_stopped_vel: 0.05
+  theta_stopped_vel: 0.05
+
+
+  #正演（前向）模拟参数
+  vx_samples: 20 #3 探索x速度空间时使用的样本数。
+  vy_samples: 1   #10 探索y速度空间时使用的样本数。
+  vth_samples: 40.0  #20 在探索旋转速度空间时所使用的样本数
+  sim_time: 2.5   #1.7 模拟前向轨迹所需的时间，单位s。
+  sim_granularity: 0.025  #0.025 在一个给定轨迹上点与点之间的步长，单位为米。
+  angular_sim_granular: 0.1
+  controller_frequency: 10  #20 这个控制器将被调用的频率，单位是Hz
+  
+
+  #轨迹评分参数
+  goal_distance_bias: 24.0  #控制器应该尝试达到它的局部目标的权重，包括速度
+  path_distance_bias: 30.0  #控制器应该与其给定路径保持贴合的权重
+  occdist_scale: 0.01        #0.01 控制器在多大程度上应该试图避开障碍物的权重
+  forward_point_distance: 0.05   #0.325 从机器人中心点到放置额外得分点的距离，单位为米
+  stop_time_buffer: 0.2     #0.2 在碰撞前，为了使新生成迹轨迹在短时间内有效，机器人必须停止的时间
+  scaling_speed: 0.25 #0.25 开始测量机器人外形时速度的绝对值，单位是m/s
+  max_scaling_factor: 0.1 #0.2 通过最大的因素来衡量机器人的外形
+  
+   
+  #目标点容错参数
+  xy_goal_tolerance: 0.20
+  yaw_goal_tolerance: 6.28 
+  latch_xy_goal_tolerance: true #如果目标误差被锁定，若机器人达到目标XY位置，它将旋转到位，即使误差没有达到，也会做旋转 
+
+  publish_cost_grid: true #定义当机器人沿着路径移动时是否“吃掉”路径点。如果设置	为真，当机器人经过这些路径点1米后，点会从路径的末端掉下来。
+  oscillation_reset_dist: 0.1  #机器人运动多远距离才会重置振荡标记
+  oscillation_reset_ang: 0.2

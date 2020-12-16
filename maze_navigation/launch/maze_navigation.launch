@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- Arguments -->
+  <!--<arg name="map_file" default="$(find maze_navigation)/maps/map_gmapping_20201210.yaml"/>-->
+  <arg name="map_file" default="$(find maze_navigation)/maps/uu.yaml"/>
+
+  <arg name="open_rviz" default="true"/>
+
+  <!--<node pkg="tf" type="static_transform_publisher" name="map_base_joint" args="0.0 0.0 0.0 0 0 0  map robot1_tf/odom 20" />-->
+
+ <!-- AMCL -->
+  <!--<include file="$(find maze_navigation)/launch/amcl_simulation.launch"/>-->
+  <include file="$(find maze_navigation)/launch/amcl.launch"/>
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- move_base -->
+
+  <include file="$(find maze_navigation)/launch/maze_move_base.launch">
+  </include>
+
+ 
+  <!--<node pkg="maze_navigation" name="inverse_angular" type="conver_angular.py" >
+  </node>-->
+  
+   <!-- 运行rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find maze_navigation)/rviz/rtabmap.rviz"/>
+</launch>

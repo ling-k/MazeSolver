@@ -1,0 +1,58 @@
+
+
+All:
+roslaunch final_project all.launch  //用导航的方式巡航
+roslaunch final_project all.launch  //用maze_explorer.py进行巡航，其它两者相同
+
+
+
+All:启动文件：
+<include file="$(find fira_maze)/launch/maze_1_two_robots.launch">
+</include>
+//启动仿真环境。
+
+<include file="$(find nav_vel_plan)/launch/robot1.launch">
+</include>
+启动robot1导航、搜索。
+
+<include file="$(find nav_vel_plan)/launch/robot2.launch">
+</include>
+启动机器人2导航、跟随。
+
+<include file="$(find nav_vel_plan)/launch/gmapping_demo.launch">
+</include>
+//启动机器人2建图
+
+
+
+
+robot1.launch文件:
+  <include file="$(find maze_navigation)/launch/maze_navigation.launch">
+  </include>
+//启动机器人1导航。
+
+  <node pkg="nav_vel_plan" type="robot1" respawn="true" name="robot1_look" output="screen" clear_params="true">
+    <rosparam file="$(find nav_vel_plan)/config/costmap_common_params.yaml" command="load" ns="vel_costmap" />
+    <rosparam file="$(find nav_vel_plan)/config/vel_planner.yaml" command="load" />
+    <rosparam file="$(find nav_vel_plan)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find nav_vel_plan)/config/global_costmap_params.yaml" command="load" />
+    <remap from="robot1_look/vel_plan_nodehandle/robot1/find_robot2" to="/robot1/find_robot2"/>
+  </node>
+//启动搜索节点，搜索机器人2，并在找到后带领机器人2回到起点。
+
+
+
+
+robot2.launch文件:
+<include file="$(find nav_vel_plan)/launch/maze_navigation.launch">
+</include>
+//启动机器人2导航
+
+<node pkg="nav_vel_plan" type="robot2" respawn="true" name="robot2_self" output="screen" clear_params="true">
+     <remap from="robot2_self/comm" to="/comm"/>
+</node>
+//启动机器人2跟随节点。
+
+
+
+
