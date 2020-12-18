@@ -6,7 +6,7 @@ The components of the project include SLAM, motion planning, robot following, an
 Place two robots in the maze by Launch file: maze_1_two_robots.launch 
 
 
-#Description of feature pack：
+# Description of feature pack：
 final_project: 
     These are mainly launch files
 
