@@ -6,10 +6,12 @@ The components of the project include SLAM, motion planning, robot following, an
 
 # Part 2
 
-# Part 3 
+# Part 3 Rescue operation
+Here are two ways for the Robot M to find the Robot S. The first one is to search for the location of the entire maze by visiting points in specific locations. This method is relatively fast, but requires a preset location. The second method is to search the entire maze area by random walk, which is relatively slow, but does not require any pre-setting.
 
-Fixed-point cruise to find the robot: roslaunch final_project all.launch
-Random cruise to find robots: roslaunch final_project all2.launch 
+For the above two methods, you can start with the following instructions:
+Method 1: roslaunch final_project start_quick.launch
+Method 2: roslaunch final_project start_full.launch 
 
 ## Description of feature pack：
 final_project: The main package include starting launch files for the project.
