@@ -15,8 +15,7 @@ Method 2 (search with specific locations) : roslaunch final_project start_full.l
 final_project: The main package include starting launch files for the project.
 
 maze_gmapping: The package for the Robot 1 gmapping
-Launch file description:
-    auto_gmapping.launch: Enable both gmapping and navigation stack
+- auto_gmapping.launch: Enable both gmapping and navigation stack
 
 explore_lite: Automatic gmapping of robot 1
 Launch file description:
