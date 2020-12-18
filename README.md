@@ -2,12 +2,16 @@
 This is the course project for Mobile Robotics. 
 The components of the project include SLAM, motion planning, robot following, and creativity task. 
 
-# Usage
-Fixed-point cruise to find the robot: roslaunch final_project all.launch  
+# Part 1
+
+# Part 2
+
+# Part 3 
+
+Fixed-point cruise to find the robot: roslaunch final_project all.launch
 Random cruise to find robots: roslaunch final_project all2.launch 
 
-
-# Description of feature pack：
+## Description of feature pack：
 final_project: The main package include starting launch files for the project.
 
 maze_gmapping: The package for the Robot 1 gmapping
@@ -19,7 +23,7 @@ Launch file description:
     explore.launch :Start the auto-gmapping node, but you need to start the gmapping feature pack and navigation stack first
 
 
-fira_maze:  
+fira_maze:
     Loading simulation environment
 
 
