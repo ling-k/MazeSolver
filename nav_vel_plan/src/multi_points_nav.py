@@ -26,6 +26,7 @@ class navigation_demo:
     def find_callback(self, msg):
         if(abs(msg.linear.x-666.0)<= 0.01):
             self.find_flag_ = True
+            self.move_base.cancel_goal()
         if(abs(msg.linear.y-666.0)<= 0.01):
             self.center_flag_ = True
 
@@ -48,6 +49,11 @@ class navigation_demo:
     def goto(self, p):
         while(self.center_flag_ == False):
             self.rate.sleep()
+        msg1 = Twist()
+        msg1 = rospy.wait_for_message('/robot1/find_robot2', Twist, timeout=None)
+        if(abs(msg1.linear.x-666.0)<= 0.01):
+            self.find_flag_ = True
+
         if(self.find_flag_ == True):
             return True
         
@@ -90,10 +96,12 @@ if __name__ == "__main__":
     navi = navigation_demo()
 
     #Set the cruise point coordinates
-    goal_points = [[0.45,-1.3,0],[-0.77,-1.3,0],[-1.3, -1.1,0]]
+    # goal_points = [[0.45,-1.3,0],[-0.77,-1.3,0],[-1.3, -1.1,0]]
+    goal_points = [[1.27,-0.45,0],[-1.14,0.02,0],[-1.15, -1.24,0],[-0.47, 1.2, 0]]
 
     #Publish navigation points in a loop
     for goal in goal_points:
         navi.goto(goal)
+
 
 
