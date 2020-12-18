@@ -12,22 +12,21 @@ Method 1 (search along the wall) : roslaunch final_project start_quick.launch
 Method 2 (search with specific locations) : roslaunch final_project start_full.launch 
 
 ## Description of feature pack：
--final_project: The main package include starting launch files for the project.
+- final_project: The main package include starting launch files for the project.
 
--maze_gmapping: The package for the Robot 1 gmapping
+- maze_gmapping: The package for the Robot M gmapping
 -- auto_gmapping.launch: Enable both gmapping and navigation stack
 
--fira_maze:Loading simulation environment
+- fira_maze: Loading simulation environment
 
--maze_navigation: 
--- maze_navigation.launch : Start the navigation stack for Robot 1, using the map that has been built
+- maze_navigation: The package for the Robot M navigation
+-- maze_navigation.launch : Start the navigation stack for Robot M, using the map that has been built
 -- amcl.launch : Start AMCL positioning function package to provide map->robot_tf1/odom coordinate transformation
 -- maze_move_base.launch: Start the navigation stack and load the parameters
 
-
-nav_vel_plan:
--- gmapping_demo.launch: Start the robot2 gmapping and convert odom topic to TF
+- nav_vel_plan: The package for the planning control.
+-- gmapping_demo.launch: Start the Robot S gmapping and convert odom topic to TF
 -- gmapping.launch: Configure the parameters of slam_gmapping
--- robot1.launch: Contains the Robot1 navigation stack launch file and the search node launch file
--- maze_navigation.launch :Start robot2's navigation stack and load the parameters
+-- robot1.launch: Contains the Robot M navigation stack launch file and the search node launch file
+-- maze_navigation.launch :Start Robot S's navigation stack and load the parameters
                          
