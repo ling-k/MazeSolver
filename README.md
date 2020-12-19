@@ -1,4 +1,5 @@
-You may need to install the prerequisite packages with the following command at first:
+You may need to install the prerequisite packages with the following command at first:  
+
 sudo apt-get install ros-melodic-move-base* ros-melodic-turtlebot3-description ros-melodic-amcl ros-melodic-map-server ros-melodic-navigation ros-melodic-rtabmap-ros ros-melodic-gmapping ros-melodic-gazebo-ros-control
 
 # maze_solver
