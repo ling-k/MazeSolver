@@ -7,8 +7,14 @@ This is the course project for Mobile Robotics.
 The components of the project include SLAM, motion planning, robot following, and creativity task. 
 
 # Part 1
+roslaunch final_project slam.launch 
+it is recommaned to start the slam operation at 0,0 location, since the center of the maze work as a good reference for loop closure.
 
 # Part 2
+roslaunch final_project navigation_final.launch 
+to start the navigation operation
+rostopic pub /topic geometry_msgs/Point -- 1.0 -0.4 0.0 
+to publish desired location for the robot to go to
 
 # Part 3 Rescue operation
 You can start with the following instructions:  
