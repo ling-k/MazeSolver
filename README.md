@@ -7,15 +7,15 @@ The components of the project include SLAM, motion planning, robot following, an
 # Part 2
 
 # Part 3 Rescue operation
-For the above two methods, you can start with the following instructions:
-Method 1 (search along the wall) : roslaunch final_project start_quick.launch 
-Method 2 (search with specific locations) : roslaunch final_project start_full.launch 
+For the above two methods, you can start with the following instructions:  
+Method 1 (search along the wall) : roslaunch final_project start_full.launch 
+Method 2 (search with specific locations) : roslaunch final_project start_quick.launch 
 
 ## Description of feature pack：
-- final_project: The main package include starting launch files for the project.
-
-- maze_gmapping: The package for the Robot M gmapping
--- auto_gmapping.launch: Enable both gmapping and navigation stack
+- final_project: The main package include starting launch files for the project.  
+  
+- maze_gmapping: The package for the Robot M gmapping  
+-- auto_gmapping.launch: Enable both gmapping and navigation stack  
 
 - fira_maze: Loading simulation environment
 
