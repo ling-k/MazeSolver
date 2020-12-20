@@ -148,6 +148,9 @@ target_link_libraries(${PROJECT_NAME}_translator ${catkin_LIBRARIES})
 add_executable(${PROJECT_NAME}_explorer src/explorer.cpp)
 target_link_libraries(${PROJECT_NAME}_explorer ${catkin_LIBRARIES})
 
+add_executable(${PROJECT_NAME}_navi_translator src/navi_translator.cpp)
+target_link_libraries(${PROJECT_NAME}_navi_translator ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

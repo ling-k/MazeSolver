@@ -1,0 +1,14 @@
+<launch>
+
+<include file="$(find fira_maze)/launch/maze_1_two_robots.launch">
+</include>
+<include file="$(find nav_vel_plan)/launch/robot1.launch">
+</include>
+
+<node pkg="nav_vel_plan" type="multi_points_nav.py" respawn="true" name="multi_points_nav.py" output="screen" clear_params="true">
+</node>
+
+<node pkg="nav_vel_plan" type="move_base_monitor" respawn="true" name="move_base_monitor" output="screen" clear_params="true">
+</node>
+
+</launch>
